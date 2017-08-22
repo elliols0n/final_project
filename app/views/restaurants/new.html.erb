@@ -1,0 +1,49 @@
+<!-- Validation failure messages -->
+<% if @restaurant.errors.any? %>
+  <% @restaurant.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Restaurant</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_restaurant" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @restaurant.name %>">
+      </div>
+
+      <!-- Label and input for cuisine_id -->
+      <div class="form-group">
+        <label for="cuisine_id" class="control-label">
+          Cuisine
+        </label>
+
+        <%= select_tag(:cuisine_id, options_from_collection_for_select(Cuisine.all, :id, :name, @restaurant.cuisine_id), :class => "form-control") %>
+        
+        <p><a href="/cuisines/new">Create a new cuisine</a></p>
+
+      </div>
+
+      <button class="btn btn-success">
+        Create Restaurant
+      </button>
+      or
+      <a href="/restaurants">Cancel</a>
+    </form>
+  </div>
+</div>
