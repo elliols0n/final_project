@@ -26,7 +26,7 @@ class DishesController < ApplicationController
     save_status = @dish.save
 
     if save_status == true
-      redirect_to("/dishes/#{@dish.id}", :notice => "Dish created successfully.")
+      redirect_to("/menus/#{@dish.menu_id}", :notice => "Dish created successfully.")
     else
       render("dishes/new.html.erb")
     end
@@ -47,7 +47,7 @@ class DishesController < ApplicationController
     save_status = @dish.save
 
     if save_status == true
-      redirect_to("/dishes/#{@dish.id}", :notice => "Dish updated successfully.")
+      redirect_to("/menus/#{@dish.menu_id}", :notice => "Dish updated successfully.")
     else
       render("dishes/edit.html.erb")
     end

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   # Routes for the Dish resource:
   # CREATE
-  get "/dishes/new", :controller => "dishes", :action => "new"
+  # get "/dishes/new", :controller => "dishes", :action => "new"
   post "/create_dish", :controller => "dishes", :action => "create"
 
   # READ

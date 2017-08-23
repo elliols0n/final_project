@@ -18,19 +18,21 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for restaurant_id -->
+      <!-- Label and input for restaurant name -->
       <div class="form-group">
         <label for="restaurant_id" class="control-label">
-          Restaurant
+          Restaurant name
         </label>
 
-        <input type="text" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= @menu.restaurant_id %>">
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name), :class => "form-control") %>
+        
+        <p><a href="/restaurants/new">Create a new restaurant</a></p>
       </div>
 
-      <!-- Label and input for name -->
+      <!-- Label and input for menu name -->
       <div class="form-group">
         <label for="name" class="control-label">
-          Name
+          Menu name
         </label>
 
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @menu.name %>">
