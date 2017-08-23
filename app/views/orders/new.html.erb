@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Order</h3>
+  <h3>New Order</h3>
 </div>
 
 <div class="row">
@@ -18,22 +18,17 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @order.user_id %>">
-      </div>
+      <!-- Input for hidden user_id -->
+      <input type="hidden" name="user_id" value="<%= @order.user_id %>">
 
       <!-- Label and input for dish_id -->
       <div class="form-group">
         <label for="dish_id" class="control-label">
           Dish
         </label>
+        
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name, @order.dish_id), :class => "form-control") %>
 
-        <input type="text" id="dish_id" name="dish_id" placeholder="Dish" class="form-control" value="<%= @order.dish_id %>">
       </div>
 
       <!-- Label and input for user_comment -->
@@ -42,7 +37,7 @@
           User comment
         </label>
 
-        <input type="text" id="user_comment" name="user_comment" placeholder="User comment" class="form-control" value="<%= @order.user_comment %>">
+        <input type="text" id="user_comment" name="user_comment" placeholder="Add any special instructions" class="form-control" value="<%= @order.user_comment %>">
       </div>
 
       <!-- Label and input for group_order_id -->
@@ -59,8 +54,9 @@
         <label for="restaurant_id" class="control-label">
           Restaurant
         </label>
+        
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @order.id), :class => "form-control") %>
 
-        <input type="text" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= @order.restaurant_id %>">
       </div>
 
       <button class="btn btn-success">

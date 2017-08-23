@@ -25,8 +25,8 @@
       </tr>
       
       <% if restaurant.menu.present? %>
-      <tr><% @restaurant.menu.each do |menu| %>
-        <td><%= menu.name %></td>
+      <tr><% @restaurant.menu.restaurant_id.each do |menu| %>
+        <td><%= restaurant.menu.name %></td>
         <td><a href="/menus/<%= restaurant.menu.id %>">
               <%= restaurant.menu.name %>
             </a></td>

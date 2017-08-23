@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.menu = Restaurant.find(params[:menu_id])
+    @restaurant.menu = Menu.find(params[:restaurant_id])
 
     render("restaurants/show.html.erb")
   end
