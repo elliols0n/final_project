@@ -33,7 +33,7 @@
           Restaurant
         </label>
 
-        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name), :class => "form-control") %>
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name), :class => "form-control", :include_blank => true) %>
         
         <p><a href="/restaurants/new">Create a new restaurant</a></p>        
       </div>

@@ -20,6 +20,12 @@
 
       <!-- Input for hidden user_id -->
       <input type="hidden" name="user_id" value="<%= @order.user_id %>">
+      
+      <!-- Input for hidden menu_id -->
+      <!--<input type="hidden" name="menu_id" value="<%=  %>">-->
+      
+      <!-- Label for hidden group_order_id -->
+        <input type="hidden" name="group_order_id" value="<%= @order.group_order_id %>">
 
       <!-- Label and input for dish_id -->
       <div class="form-group">
@@ -27,7 +33,7 @@
           Dish
         </label>
         
-        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name, @order.dish_id), :class => "form-control") %>
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name, @order.dish_id), :class => "form-control", :include_blank => true) %>
 
       </div>
 
@@ -40,14 +46,7 @@
         <input type="text" id="user_comment" name="user_comment" placeholder="Add any special instructions" class="form-control" value="<%= @order.user_comment %>">
       </div>
 
-      <!-- Label and input for group_order_id -->
-      <div class="form-group">
-        <label for="group_order_id" class="control-label">
-          Group order
-        </label>
 
-        <input type="text" id="group_order_id" name="group_order_id" placeholder="Group order" class="form-control" value="<%= @order.group_order_id %>">
-      </div>
 
       <!-- Label and input for restaurant_id -->
       <div class="form-group">
@@ -55,7 +54,7 @@
           Restaurant
         </label>
         
-        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @order.id), :class => "form-control") %>
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @order.id), :class => "form-control", :include_blank => true) %>
 
       </div>
 
