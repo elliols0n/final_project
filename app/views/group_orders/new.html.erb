@@ -18,31 +18,33 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for receipt -->
+      <!-- Label and input for order name -->
       <div class="form-group">
-        <label for="receipt" class="control-label">
-          Receipt
+        <label for="name" class="control-label">
+          Order name
         </label>
 
-        <input type="text" id="receipt" name="receipt" placeholder="Receipt" class="form-control" value="<%= @group_order.receipt %>">
+        <input type="text" id="name" name="name" placeholder="Use your order's date & reason, like: IPM lunch on August 29, 2017" class="form-control" value="<%= @group_order.name %>">
       </div>
 
-      <!-- Label and input for price -->
+      <!-- Label and input for restaurant name -->
       <div class="form-group">
-        <label for="price" class="control-label">
-          Price
-        </label>
-
-        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @group_order.price %>">
-      </div>
-
-      <!-- Label and input for restaurant_id -->
-      <div class="form-group">
-        <label for="restaurant_id" class="control-label">
+        <label for="restaurant" class="control-label">
           Restaurant
         </label>
 
-        <input type="text" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= @group_order.restaurant_id %>">
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name), :class => "form-control") %>
+        
+        <p><a href="/restaurants/new">Create a new restaurant</a></p>        
+      </div>
+
+      <!-- Label and input for order description (name) -->
+      <div class="form-group">
+        <label for="comment" class="control-label">
+          Special comments
+        </label>
+
+        <input type="text" id="comment" name="comment" placeholder="Keep any special notes, like whether anyone skipped lunch or if you had a coupon" class="form-control" value="<%= @group_order.comment %>">
       </div>
 
       <button class="btn btn-success">

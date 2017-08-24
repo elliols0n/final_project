@@ -8,6 +8,8 @@
 #  restaurant_id :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  comment       :string
+#  name          :string
 #
 
 class GroupOrder < ApplicationRecord
@@ -16,4 +18,6 @@ class GroupOrder < ApplicationRecord
     belongs_to :restaurant
     
     has_many :orders, :dependent => :destroy
+    
+    has_one :menu
 end

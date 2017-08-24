@@ -23,6 +23,9 @@ class GroupOrdersController < ApplicationController
     @group_order.receipt = params[:receipt]
     @group_order.price = params[:price]
     @group_order.restaurant_id = params[:restaurant_id]
+    # @group_order.menu = Restaurant.find
+    @group_order.name = params[:name]
+    @group_order.comment = params[:comment]
 
     save_status = @group_order.save
 
@@ -45,6 +48,8 @@ class GroupOrdersController < ApplicationController
     @group_order.receipt = params[:receipt]
     @group_order.price = params[:price]
     @group_order.restaurant_id = params[:restaurant_id]
+    @group_order.name = params[:name]
+    @group_order.comment = params[:comment]    
 
     save_status = @group_order.save
 

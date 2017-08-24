@@ -11,7 +11,7 @@
 #
 
 class Restaurant < ApplicationRecord
-    has_one :menu, :dependent => :destroy
+    has_many :menus, :dependent => :destroy
     
     has_many :group_orders, :dependent => :destroy
     

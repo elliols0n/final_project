@@ -1,31 +1,66 @@
 <div class="page-header">
-  <h3>Group Order #<%= @group_order.id %></h3>
+  <h3><%= @group_order.name %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Receipt</dt>
-      <dd><%= @group_order.receipt %></dd>
-
-      <dt>Price</dt>
-      <dd><%= @group_order.price %></dd>
+      <dt>Order name</dt>
+      <dd><%= @group_order.name %></dd>
 
       <dt>Restaurant</dt>
-      <dd><%= @group_order.restaurant_id %></dd>
+      <dd><%= @group_order.restaurant.name %></dd>
+
+      <dt>Menu</dt>
+      <dd><%=  %></dd>      
+
+      <dt>Special comments</dt>
+      <dd><%= @group_order.comment %></dd>
 
     </dl>
+  </div>
+</div>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/group_orders" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/group_orders/<%= @group_order.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_group_order/<%= @group_order.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <h3>
+      Individual orders
+      <a href="/orders/new" class="btn btn-lg btn-success">New Order</a>
+    </h3>
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Person</th>
+        <th>Dish</th>
+        <th>User comment</th>
+        <th>Actions</th>
+      </tr>
+      
+      <% @group_order.orders.each do |order| %>
+      <tr>
+        <td><a href="/orders/<%= order.id %>">
+              <%= order.name %>
+            </a></td>
+        <td>
+          <a href="/orders/<%= order.id %>" class="btn btn-primary">Show</a>
+          <a href="/orders/<%= order.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_order/<%= order.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+  <div class="btn-group btn-group-justified">
+    <a href="/group_orders" class="btn btn-primary">
+      Back
+    </a>
+    <a href="/group_orders/<%= @group_order.id %>/edit" class="btn btn-warning">
+      Edit
+    </a>
+    <a href="/delete_group_order/<%= @group_order.id %>" class="btn btn-danger" rel="nofollow">
+      Delete
+    </a>
   </div>
 </div>

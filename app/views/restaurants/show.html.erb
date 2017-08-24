@@ -24,18 +24,16 @@
         <th>Actions</th>
       </tr>
       
-      <% if restaurant.menu.present? %>
-      <tr><% @restaurant.menu.restaurant_id.each do |menu| %>
-        <td><%= restaurant.menu.name %></td>
-        <td><a href="/menus/<%= restaurant.menu.id %>">
-              <%= restaurant.menu.name %>
+      <% @restaurant.menus.each do |menu| %>
+      <tr>
+        <td><a href="/menus/<%= menu.id %>">
+              <%= menu.name %>
             </a></td>
         <td>
           <a href="/menus/<%= menu.id %>" class="btn btn-primary">Show</a>
           <a href="/menus/<%= menu.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_menu/<%= menu.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
-        <% end %>
       </tr>
       <% end %>
     </table>
