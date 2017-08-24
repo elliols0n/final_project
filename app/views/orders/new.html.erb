@@ -21,8 +21,11 @@
       <!-- Input for hidden user_id -->
       <input type="hidden" name="user_id" value="<%= @order.user_id %>">
       
+      <!-- Input for hidden restaurant -->
+      <input type="hidden" name="restaurant" value="<%= @order.restaurant_id %>">
+
       <!-- Input for hidden menu_id -->
-      <!--<input type="hidden" name="menu_id" value="<%=  %>">-->
+      <input type="hidden" name="menu_id" value="<%=  %>">
       
       <!-- Label for hidden group_order_id -->
         <input type="hidden" name="group_order_id" value="<%= @order.group_order_id %>">
@@ -45,8 +48,6 @@
 
         <input type="text" id="user_comment" name="user_comment" placeholder="Add any special instructions" class="form-control" value="<%= @order.user_comment %>">
       </div>
-
-
 
       <!-- Label and input for restaurant_id -->
       <div class="form-group">

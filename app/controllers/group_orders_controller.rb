@@ -7,6 +7,8 @@ class GroupOrdersController < ApplicationController
 
   def show
     @group_order = GroupOrder.find(params[:id])
+    # @group_order.menu = Menu.find(params[:id])
+    
 
     render("group_orders/show.html.erb")
   end
@@ -23,7 +25,7 @@ class GroupOrdersController < ApplicationController
     @group_order.receipt = params[:receipt]
     @group_order.price = params[:price]
     @group_order.restaurant_id = params[:restaurant_id]
-    # @group_order.menu = Restaurant.find
+    # @group_order.menu = Restaurant.find(params[:menu_id])
     @group_order.name = params[:name]
     @group_order.comment = params[:comment]
 

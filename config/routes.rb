@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root :to => "restaurants#index"
+  root :to => "group_orders#index"
   
   # Routes for the Cuisine resource:
   # CREATE

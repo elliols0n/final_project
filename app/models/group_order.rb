@@ -20,4 +20,8 @@ class GroupOrder < ApplicationRecord
     has_many :orders, :dependent => :destroy
     
     has_one :menu
+    
+    has_many :users, :through => :orders, :source => :users
+    
+    validates :name, :presence => true
 end

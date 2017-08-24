@@ -14,9 +14,11 @@
 
 class Order < ApplicationRecord
     belongs_to :user
-    
     belongs_to :restaurant
-    
     belongs_to :dish
     belongs_to :group_order
+    
+    validates :dish, :presence => true
+    validates :comment, :presence => true
+    validates :restaurant, :presence => true
 end
