@@ -52,7 +52,7 @@ class GroupOrdersController < ApplicationController
     @group_order.restaurant_id = params[:restaurant_id]
     @group_order.menu_id = params[:menu_id]
     @group_order.name = params[:name]
-    @group_order.comment = params[:comment]   
+    @group_order.user_comment = params[:user_comment]   
 
     save_status = @group_order.save
 
