@@ -18,42 +18,17 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
+      <!-- Input for hidden user_id -->
+      <input type="hidden" name="user_id" value="<%= @order.user_id %>">
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @order.user_id %>">
-      </div>
+      <!-- Input for hidden group_order_id -->
+      <input type="hidden" name="group_order_id" value="<%= @order.group_order_id %>">
 
-      <!-- Label and input for group_order_id -->
-      <div class="form-group">
-        <label for="group_order_id" class="control-label">
-          Group order
-        </label>
+      <!-- Input for hidden restaurant_id -->
+      <input type="hidden" name="restaurant_id" value="<%= @order.restaurant.id %>">
 
-        <%= select_tag(:group_order_id, options_from_collection_for_select(GroupOrder.all, :id, :name, @order.group_order_id), :class => "form-control", :include_blank => true) %>  
-      </div>
-
-      <!-- Label and input for restaurant_id -->
-      <div class="form-group">
-        <label for="restaurant_id" class="control-label">
-          Restaurant
-        </label>
-
-        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @order.restaurant_id), :class => "form-control", :include_blank => true) %>
-      </div>
-
-      <!-- Label and input for menu_id -->
-      <div class="form-group">
-        <label for="menu_id" class="control-label">
-          Menu
-        </label>
-        
-        <%= select_tag(:menu_id, options_from_collection_for_select(Menu.all, :id, :name, @order.menu_id), :class => "form-control", :include_blank => true) %>
-
-      </div>       
+      <!-- Input for hidden menu_id -->
+      <input type="hidden" name="menu_id" value="<%= @order.menu.id %>">
 
       <!-- Label and input for dish name -->
       <div class="form-group">

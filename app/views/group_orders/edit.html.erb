@@ -45,7 +45,7 @@
           Menu
         </label>
 
-        <%= select_tag(:menu_id, options_from_collection_for_select(Menu.all, :id, :name), :class => "form-control", :include_blank => true) %>
+        <%= select_tag(:menu_id, options_from_collection_for_select(Menu.all, :id, :name, @group_order.menu_id), :class => "form-control", :include_blank => true) %>
         
         <p><a href="/menus/new">Create a new menu</a></p>        
       </div>      
