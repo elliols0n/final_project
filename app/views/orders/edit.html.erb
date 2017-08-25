@@ -36,7 +36,7 @@
           Dish
         </label>
 
-        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name, @order.dish_id), :class => "form-control") %>
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.where(:menu_id => @order.menu_id), :id, :name, @order.dish_id), :class => "form-control") %>
 
         <p><a href="/dishes/new">Create a new dish</a></p>
       </div>

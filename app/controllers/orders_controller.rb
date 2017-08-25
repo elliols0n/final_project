@@ -51,6 +51,7 @@ class OrdersController < ApplicationController
     @order.user_comment = params[:user_comment]
     @order.group_order_id = params[:group_order_id]
     @order.restaurant_id = params[:restaurant_id]
+    @order.menu_id = params[:menu_id]
 
     save_status = @order.save
 
