@@ -27,14 +27,8 @@
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @dish.name %>">
       </div>
 
-      <!-- Label and input for menu_id -->
-      <div class="form-group">
-        <label for="menu_id" class="control-label">
-          Menu
-        </label>
-
-        <input type="text" id="menu_id" name="menu_id" placeholder="Menu" class="form-control" value="<%= @dish.menu_id %>">
-      </div>
+      <!-- Input for hidden menu_id -->
+      <input type="hidden" name="menu_id" value="<%= @dish.menu.id %>">
 
       <button class="btn btn-success">
         Create Dish

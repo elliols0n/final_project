@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Dish #<%= @dish.id %></h3>
+  <h3><%= @dish.name %></h3>
 </div>
 
 <div class="row">
@@ -9,12 +9,12 @@
       <dd><%= @dish.name %></dd>
 
       <dt>Menu</dt>
-      <dd><%= @dish.menu_id %></dd>
+      <dd><a href="/menus/<%= @dish.menu.id %>"><%= @dish.menu.name %></a></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/dishes" class="btn btn-primary">
+      <a href="/menus/<%= @dish.menu.id %>" class="btn btn-primary">
         Back
       </a>
       <a href="/dishes/<%= @dish.id %>/edit" class="btn btn-warning">
