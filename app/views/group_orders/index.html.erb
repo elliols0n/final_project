@@ -9,18 +9,18 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
+        <th>Date created</th>
         <th>Order</th>
         <th>Restaurant</th>
-        <th>Description</th>
         <th>Count of orders</th>
         <th>Actions</th>
       </tr>
 
       <% @group_orders.each do |group_order| %>
       <tr>
+        <td><%= group_order.created_at.strftime("%d %b %Y") %></td>
         <td><%= group_order.name %></td>
         <td><%= group_order.restaurant.name %></td>
-        <td><%= group_order.comment %></td>
         <td><%= group_order.orders.count %></td>
         <td>
           <a href="/group_orders/<%= group_order.id %>" class="btn btn-primary">Show</a>
