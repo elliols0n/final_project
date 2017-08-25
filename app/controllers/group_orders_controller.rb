@@ -71,7 +71,7 @@ class GroupOrdersController < ApplicationController
     if URI(request.referer).path == "/group_orders/#{@group_order.id}"
       redirect_to("/group_orders", :notice => "Group order deleted.")
     else
-      redirect_to(:back, :notice => "Group order deleted.")
+      redirect_to("/group_orders", :notice => "Group order deleted.")
     end
   end
 end

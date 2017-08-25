@@ -18,4 +18,7 @@ class Restaurant < ApplicationRecord
     has_many :orders, :dependent => :destroy
     
     belongs_to :cuisine
+    
+    validates :cuisine, :presence => true
+    validates :name, :presence => true
 end
