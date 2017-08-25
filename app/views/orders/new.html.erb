@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>New Order</h3>
+  <h3>New Order from <%= @order.restaurant.name %></h3>
 </div>
 
 <div class="row">
@@ -18,62 +18,42 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Input for hidden group order id -->
+      <input type="hidden" name="group_order_id" value="<%= @order.group_order_id %>">
+      
       <!-- Input for hidden user_id -->
       <input type="hidden" name="user_id" value="<%= current_user.id %>">
       
-
-      <!-- Label and input for group_order_id -->
-      <div class="form-group">
-        <label for="group_order_id" class="control-label">
-          Group Order
-        </label>
-        
-        <%= select_tag(:group_order_id, options_from_collection_for_select(GroupOrder.all, :id, :name, @order.group_order_id), :class => "form-control", :include_blank => true) %>        
+      <!-- Input for hidden restaurant_id -->
+      <input type="hidden" name="restaurant_id" value="<%= @order.restaurant_id %>">
       
-      <!-- Label and input for restaurant_id -->
-      <div class="form-group">
-        <label for="restaurant_id" class="control-label">
-          Restaurant
-        </label>
-        
-        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @order.restaurant_id), :class => "form-control", :include_blank => true) %>
+      <!-- Input for hidden menu_id -->
+      <input type="hidden" name="menu_id" value="<%= @order.menu_id %>">
 
-      </div>
-
-      <!-- Label and input for menu_id -->
-      <div class="form-group">
-        <label for="menu_id" class="control-label">
-          Menu
-        </label>
-        
-        <%= select_tag(:menu_id, options_from_collection_for_select(Menu.all, :id, :name, @order.menu_id), :class => "form-control", :include_blank => true) %>
-
-      </div>      
-      
       <!-- Label and input for dish_id -->
       <div class="form-group">
         <label for="dish_id" class="control-label">
           Dish
         </label>
         
-        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name, @order.dish_id), :class => "form-control", :include_blank => true) %>
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.where(:menu_id => @order.menu_id), :id, :name), :class => "form-control", :include_blank => true) %>
 
       </div>
 
       <!-- Label and input for user_comment -->
       <div class="form-group">
         <label for="user_comment" class="control-label">
-          User comment
+          Special directions
         </label>
 
-        <input type="text" id="user_comment" name="user_comment" placeholder="Add any special instructions" class="form-control" value="<%= @order.user_comment %>">
+        <input type="text" id="user_comment" name="user_comment" placeholder="Add any special instructions" class="form-control">
       </div>
 
       <button class="btn btn-success">
         Create Order
       </button>
       or
-      <a href="/group_orders/#{@group_order.id}">Cancel</a>
+      <a href="/group_orders/<%= @order.group_order_id %>">Cancel</a>
     </form>
   </div>
 </div>

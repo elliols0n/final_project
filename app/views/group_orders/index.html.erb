@@ -12,6 +12,7 @@
         <th>Order</th>
         <th>Restaurant</th>
         <th>Description</th>
+        <th>Count of orders</th>
         <th>Actions</th>
       </tr>
 
@@ -20,6 +21,7 @@
         <td><%= group_order.name %></td>
         <td><%= group_order.restaurant.name %></td>
         <td><%= group_order.comment %></td>
+        <td><%= group_order.orders.count %></td>
         <td>
           <a href="/group_orders/<%= group_order.id %>" class="btn btn-primary">Show</a>
           <a href="/group_orders/<%= group_order.id %>/edit" class="btn btn-warning">Edit</a>
