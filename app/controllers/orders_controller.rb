@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
     save_status = @order.save
 
     if save_status == true
-      redirect_to("/orders/#{@order.id}", :notice => "Order created successfully.")
+      redirect_to("/group_orders/#{@order.group_order_id}", :notice => "Order created successfully.")
     else
       render("orders/new.html.erb")
     end
