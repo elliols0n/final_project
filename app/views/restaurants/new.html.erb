@@ -33,7 +33,7 @@
           Cuisine
         </label>
 
-        <%= select_tag(:cuisine_id, options_from_collection_for_select(Cuisine.all, :id, :name, @restaurant.cuisine_id), :class => "form-control") %>
+        <%= select_tag(:cuisine_id, options_from_collection_for_select(Cuisine.all, :id, :name, @restaurant.cuisine_id), :class => "form-control", :include_blank => true) %>
         
         <p><a href="/cuisines/new">Create a new cuisine</a></p>
 

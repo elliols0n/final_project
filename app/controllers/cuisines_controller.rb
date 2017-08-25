@@ -25,7 +25,7 @@ class CuisinesController < ApplicationController
     save_status = @cuisine.save
 
     if save_status == true
-      redirect_to("/cuisines/#{@cuisine.id}", :notice => "Cuisine created successfully.")
+      redirect_to("/restaurants/new", :notice => "Cuisine created successfully.")
     else
       render("cuisines/new.html.erb")
     end
