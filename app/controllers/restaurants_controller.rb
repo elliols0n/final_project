@@ -60,9 +60,9 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     if URI(request.referer).path == "/restaurants/#{@restaurant.id}"
-      redirect_to("/", :notice => "Restaurant deleted.")
+      redirect_to("/restaurants", :notice => "Restaurant deleted.")
     else
-      redirect_to(:back, :notice => "Restaurant deleted.")
+      redirect_to("/restaurants", :notice => "Restaurant deleted.")
     end
   end
 end

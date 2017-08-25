@@ -12,4 +12,5 @@ class Cuisine < ApplicationRecord
     has_many :restaurants, :dependent => :nullify
     
     validates :name, :presence => true
+    validates :name, :uniqueness => true
 end
