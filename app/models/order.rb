@@ -10,15 +10,16 @@
 #  restaurant_id  :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  menu_id        :integer
 #
 
 class Order < ApplicationRecord
     belongs_to :user
     belongs_to :restaurant
     belongs_to :dish
+    belongs_to :menu
     belongs_to :group_order
     
     validates :dish, :presence => true
-    validates :comment, :presence => true
     validates :restaurant, :presence => true
 end

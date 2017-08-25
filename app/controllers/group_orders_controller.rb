@@ -25,7 +25,7 @@ class GroupOrdersController < ApplicationController
     @group_order.receipt = params[:receipt]
     @group_order.price = params[:price]
     @group_order.restaurant_id = params[:restaurant_id]
-    # @group_order.menu = Restaurant.find(params[:menu_id])
+    @group_order.menu_id = params[:menu_id]
     @group_order.name = params[:name]
     @group_order.comment = params[:comment]
 
@@ -50,8 +50,9 @@ class GroupOrdersController < ApplicationController
     @group_order.receipt = params[:receipt]
     @group_order.price = params[:price]
     @group_order.restaurant_id = params[:restaurant_id]
+    @group_order.menu_id = params[:menu_id]
     @group_order.name = params[:name]
-    @group_order.comment = params[:comment]    
+    @group_order.comment = params[:comment]   
 
     save_status = @group_order.save
 
@@ -68,7 +69,7 @@ class GroupOrdersController < ApplicationController
     @group_order.destroy
 
     if URI(request.referer).path == "/group_orders/#{@group_order.id}"
-      redirect_to("/", :notice => "Group order deleted.")
+      redirect_to("/group_orders", :notice => "Group order deleted.")
     else
       redirect_to(:back, :notice => "Group order deleted.")
     end

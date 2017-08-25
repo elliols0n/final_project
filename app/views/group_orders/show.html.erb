@@ -9,10 +9,10 @@
       <dd><%= @group_order.name %></dd>
 
       <dt>Restaurant</dt>
-      <dd><%= @group_order.restaurant.name %></dd>
+      <dd><a href="/restaurants/<%= @group_order.restaurant.id %>"><%= @group_order.restaurant.name %></a></dd>
 
       <dt>Menu</dt>
-      <dd><%= @group_order.restaurant.name %></dd>      
+      <dd><a href="/menus/<%= @group_order.menu.id %>"><%= @group_order.menu.name %></a></dd>      
 
       <dt>Special comments</dt>
       <dd><%= @group_order.comment %></dd>
@@ -37,9 +37,9 @@
       
       <% @group_order.orders.each do |order| %>
       <tr>
-        <td><a href="/orders/<%= order.id %>">
-              <%= order.name %>
-            </a></td>
+        <td><%= order.user_id %></td>
+        <td><%= order.dish.name %></td>
+        <td><%= order.user_comment %></td>
         <td>
           <a href="/orders/<%= order.id %>" class="btn btn-primary">Show</a>
           <a href="/orders/<%= order.id %>/edit" class="btn btn-warning">Edit</a>

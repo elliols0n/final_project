@@ -27,13 +27,43 @@
         <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @order.user_id %>">
       </div>
 
-      <!-- Label and input for dish_id -->
+      <!-- Label and input for group_order_id -->
+      <div class="form-group">
+        <label for="group_order_id" class="control-label">
+          Group order
+        </label>
+
+        <%= select_tag(:group_order_id, options_from_collection_for_select(GroupOrder.all, :id, :name, @order.group_order_id), :class => "form-control", :include_blank => true) %>  
+      </div>
+
+      <!-- Label and input for restaurant_id -->
+      <div class="form-group">
+        <label for="restaurant_id" class="control-label">
+          Restaurant
+        </label>
+
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @order.restaurant_id), :class => "form-control", :include_blank => true) %>
+      </div>
+
+      <!-- Label and input for menu_id -->
+      <div class="form-group">
+        <label for="menu_id" class="control-label">
+          Menu
+        </label>
+        
+        <%= select_tag(:menu_id, options_from_collection_for_select(Menu.all, :id, :name, @order.menu_id), :class => "form-control", :include_blank => true) %>
+
+      </div>       
+
+      <!-- Label and input for dish name -->
       <div class="form-group">
         <label for="dish_id" class="control-label">
           Dish
         </label>
 
-        <input type="text" id="dish_id" name="dish_id" placeholder="Dish" class="form-control" value="<%= @order.dish_id %>">
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name, @order.dish_id), :class => "form-control") %>
+
+        <p><a href="/dishes/new">Create a new dish</a></p>
       </div>
 
       <!-- Label and input for user_comment -->
@@ -43,24 +73,6 @@
         </label>
 
         <input type="text" id="user_comment" name="user_comment" placeholder="User comment" class="form-control" value="<%= @order.user_comment %>">
-      </div>
-
-      <!-- Label and input for group_order_id -->
-      <div class="form-group">
-        <label for="group_order_id" class="control-label">
-          Group order
-        </label>
-
-        <input type="text" id="group_order_id" name="group_order_id" placeholder="Group order" class="form-control" value="<%= @order.group_order_id %>">
-      </div>
-
-      <!-- Label and input for restaurant_id -->
-      <div class="form-group">
-        <label for="restaurant_id" class="control-label">
-          Restaurant
-        </label>
-
-        <input type="text" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= @order.restaurant_id %>">
       </div>
 
       <button class="btn btn-warning">

@@ -6,19 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>User</dt>
-      <dd><%= @order.user_id %></dd>
+      <dd><%= @order.user.id %></dd>
+
+      <dt>Group order</dt>
+      <dd><a href="/group_orders/<%= @order.group_order.id %>"><%= @order.group_order.name %></a></dd>
+
+      <dt>Restaurant</dt>
+      <dd><a href="/restaurants/<%= @order.restaurant.id %>"><%= @order.restaurant.name %></a></dd>
+
+      <dt>Menu</dt>
+      <dd><a href="/menus/<%= @order.menu.id %>"><%= @order.menu.name %></a></dd>
 
       <dt>Dish</dt>
-      <dd><%= @order.dish_id %></dd>
+      <dd><%= @order.dish.name %></dd>
 
       <dt>User comment</dt>
       <dd><%= @order.user_comment %></dd>
-
-      <dt>Group order</dt>
-      <dd><%= @order.group_order_id %></dd>
-
-      <dt>Restaurant</dt>
-      <dd><%= @order.restaurant_id %></dd>
 
     </dl>
 
