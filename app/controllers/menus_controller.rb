@@ -61,9 +61,9 @@ class MenusController < ApplicationController
     @menu.destroy
 
     if URI(request.referer).path == "/menus/#{@menu.id}"
-      redirect_to("/", :notice => "Menu deleted.")
+      redirect_to("/restaurants/#{@menu.restaurant_id}", :notice => "Menu deleted.")
     else
-      redirect_to(:back, :notice => "Menu deleted.")
+      redirect_to("/restaurants/#{@menu.restaurant_id}", :notice => "Menu deleted.")
     end
   end
 end

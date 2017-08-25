@@ -18,14 +18,9 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for restaurant_id -->
-      <div class="form-group">
-        <label for="restaurant_id" class="control-label">
-          Restaurant
-        </label>
-
-        <input type="text" id="restaurant_id" name="restaurant_id" placeholder="Restaurant" class="form-control" value="<%= @menu.restaurant_id %>">
-      </div>
+     
+      <!-- Input for hidden restaurant_id -->
+      <input type="hidden" name="restaurant_id" value="<%= @menu.restaurant_id %>">
 
       <!-- Label and input for name -->
       <div class="form-group">

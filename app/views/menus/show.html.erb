@@ -6,7 +6,7 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Restaurant</dt>
-      <dd><%= @menu.restaurant.name %></dd>
+      <dd><a href="/restaurants/<%= @menu.restaurant.id %>"><%= @menu.restaurant.name %></a></dd>
 
       <dt>Name</dt>
       <dd><%= @menu.name %></dd>
