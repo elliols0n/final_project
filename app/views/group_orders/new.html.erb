@@ -1,0 +1,68 @@
+<!-- Validation failure messages -->
+<% if @group_order.errors.any? %>
+  <% @group_order.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h1>Start a new group order</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_group_order" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for order name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Order name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Use your order's date & reason, like: IPM lunch on August 29, 2017" class="form-control" value="<%= @group_order.name %>">
+      </div>
+
+      <!-- Label and input for restaurant name -->
+      <div class="form-group">
+        <label for="restaurant" class="control-label">
+          Restaurant
+        </label>
+
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name), :class => "form-control", :include_blank => true) %>
+        
+        <p><a href="/restaurants/new">Create a new restaurant</a></p>        
+      </div>
+      
+      <!-- Label and input for menu name -->
+      <div class="form-group">
+        <label for="menu" class="control-label">
+          Menu
+        </label>
+
+        <%= select_tag(:menu_id, options_from_collection_for_select(Menu.all, :id, :name), :class => "form-control", :include_blank => true) %>
+        
+        <p><a href="/menus/new">Create a new menu</a></p>        
+      </div>
+
+      <!-- Label and input for order description (name) -->
+      <div class="form-group">
+        <label for="comment" class="control-label">
+          Comments about this group order
+        </label>
+
+        <input type="text" id="comment" name="comment" placeholder="Keep any special notes, like whether anyone skipped lunch or if you had a coupon" class="form-control" value="<%= @group_order.comment %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Group Order
+      </button>
+      or
+      <a href="/group_orders">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<!-- Validation failure messages -->
+<% if @order.errors.any? %>
+  <% @order.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Order #<%= @order.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_order/<%= @order.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Input for hidden user_id -->
+      <input type="hidden" name="user_id" value="<%= @order.user_id %>">
+
+      <!-- Input for hidden group_order_id -->
+      <input type="hidden" name="group_order_id" value="<%= @order.group_order_id %>">
+
+      <!-- Input for hidden restaurant_id -->
+      <input type="hidden" name="restaurant_id" value="<%= @order.restaurant.id %>">
+
+      <!-- Input for hidden menu_id -->
+      <input type="hidden" name="menu_id" value="<%= @order.menu.id %>">
+
+      <!-- Label and input for dish name -->
+      <div class="form-group">
+        <label for="dish_id" class="control-label">
+          Dish
+        </label>
+
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.where(:menu_id => @order.menu_id), :id, :name, @order.dish_id), :class => "form-control") %>
+
+        <p><a href="/dishes/new">Create a new dish</a></p>
+      </div>
+
+      <!-- Label and input for user_comment -->
+      <div class="form-group">
+        <label for="user_comment" class="control-label">
+          User comment
+        </label>
+
+        <input type="text" id="user_comment" name="user_comment" placeholder="User comment" class="form-control" value="<%= @order.user_comment %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Order
+      </button>
+      or
+      <a href="/orders/<%= @order.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

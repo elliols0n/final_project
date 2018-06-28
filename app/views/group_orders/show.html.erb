@@ -1,0 +1,118 @@
+<div class="page-header">
+  <h1><%= @group_order.name %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Order name</dt>
+      <dd><%= @group_order.name %></dd>
+
+      <dt>Restaurant</dt>
+      <dd><a href="/restaurants/<%= @group_order.restaurant.id %>"><%= @group_order.restaurant.name %></a></dd>
+
+      <dt>Menu</dt>
+      <dd><a href="/menus/<%= @group_order.menu.id %>"><%= @group_order.menu.name %></a></dd>      
+
+      <dt>About this group order</dt>
+      <dd><%= @group_order.comment %></dd>
+
+    </dl>
+  </div>
+</div>
+
+<div class="page-header">
+  <h3>Add Order</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_order" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Input for hidden group order id -->
+      <input type="hidden" name="group_order_id" value="<%= @group_order.id %>">
+      
+      <!-- Input for hidden user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+      
+      <!-- Input for hidden restaurant_id -->
+      <input type="hidden" name="restaurant_id" value="<%= @group_order.restaurant_id %>">
+      
+      <!-- Input for hidden menu_id -->
+      <input type="hidden" name="menu_id" value="<%= @group_order.menu_id %>">
+
+      <!-- Label and input for dish_id -->
+      <div class="form-group">
+        <label for="dish_id" class="control-label">
+          Dish
+        </label>
+        
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.where(:menu_id => @group_order.menu_id), :id, :name), :class => "form-control", :include_blank => true) %>
+
+      </div>
+
+      <!-- Label and input for user_comment -->
+      <div class="form-group">
+        <label for="user_comment" class="control-label">
+          Special directions
+        </label>
+
+        <input type="text" id="user_comment" name="user_comment" placeholder="Add any special instructions" class="form-control">
+      </div>      
+
+      <button class="btn btn-success">
+        Create Order
+      </button>
+    </form>
+    </br>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <div class="page-header">
+      <h3>Individual Orders</h3>
+    </div>
+
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Person</th>
+        <th>Dish</th>
+        <th>User comment</th>
+        <th>Actions</th>
+      </tr>
+      
+      <% @group_order.orders.each do |order| %>
+      <tr>
+        <td><%= order.user.username %></td>
+        <td><%= order.dish.name %></td>
+        <td><%= order.user_comment %></td>
+        <td>
+          <a href="/orders/<%= order.id %>" class="btn btn-primary">Show</a>
+          <% if current_user.id == order.user_id %>
+          <a href="/orders/<%= order.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_order/<%= order.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+
+  <div class="btn-group btn-group-justified">
+    <a href="/group_orders" class="btn btn-primary">
+      Back
+    </a>
+    <a href="/group_orders/<%= @group_order.id %>/edit" class="btn btn-warning">
+      Edit
+    </a>
+    <a href="/delete_group_order/<%= @group_order.id %>" class="btn btn-danger" rel="nofollow">
+      Delete
+    </a>
+  </div>
+</div>
